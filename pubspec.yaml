@@ -1,0 +1,120 @@
+name: v2x
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  easy_localization: ^3.0.7
+  flutter_localizations:
+    sdk: flutter
+
+  flutter:
+    sdk: flutter
+
+  # calling API  
+  dio: ^5.4.0
+  retrofit: ^4.0.3
+
+  # Dependency injection
+  get_it: ^7.6.4
+  injectable: ^2.3.0
+
+  # Json Annotation
+  json_annotation: ^4.9.0
+
+  provider: ^6.1.2
+
+  cupertino_icons: ^1.0.6
+
+  # Navigation router
+  go_router: ^14.1.0
+
+  # # Local notification
+  # flutter_local_notifications: ^17.1.2
+
+  # Secure storage
+  flutter_secure_storage: ^9.0.0
+
+  # Image picker
+  image_picker: ^1.1.1
+
+  dartz: ^0.10.1
+
+  # Google map
+  google_maps_flutter: ^2.12.2
+
+  # time ago
+  timeago: ^3.6.0
+
+  # svg
+  flutter_svg: ^2.0.9
+  
+  # web view
+  webview_flutter: ^4.4.2
+  
+  # url launcher
+  url_launcher: ^6.3.0
+  
+  # package info
+  package_info_plus: ^8.0.0
+
+  # connectivity
+  connectivity_plus: ^6.0.5
+  internet_connection_checker_plus: ^2.3.0
+
+  # shared preferences
+  shared_preferences: ^2.5.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.4.7
+  injectable_generator: ^2.4.1
+  json_serializable: ^6.8.0
+  flutter_gen_runner: 5.3.1
+  retrofit_generator: ^7.0.7
+  flutter_native_splash: ^2.3.5
+  flutter_launcher_icons: ^0.13.1
+  flutter_lints: ^5.0.0
+  
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "lib/core/assets/res/png/logo_no_buffer.png"
+  
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - lib/core/assets/localizations/en/
+    - lib/core/assets/localizations/ar/
+    - lib/core/assets/res/png/
+
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: lib/core/assets/fonts/cairo_regular.ttf
+        - asset: lib/core/assets/fonts/cairo_bold.ttf
+          weight: 700
+
+
+flutter_native_splash:
+  color: "#ffffff"             
+  # image: lib/core/assets/res/png/logo_with_buffer.png       
+  branding: null          
+  android: true
+  ios: true
+  web: false
+  android_gravity: center
+  ios_content_mode: center
+  fullscreen: true
+  android_12:
+    # image: lib/core/assets/res/png/logo_with_buffer.png
+    icon_background_color: "#ffffff"

@@ -1,0 +1,18 @@
+{
+    "add_vehicle_sub_title": "Add the vehicle to view it on the list",
+    "add_vehicle": "Add Vehicle",
+    "vehicle_maker": "Vehicle maker",
+    "select_vehicle_maker": "Select vehicle maker",
+    "vehicle_model": "Vehicle model",
+    "enter_vehicle_model": "Enter vehicle model",
+    "vehicle_year": "Vehicle year",
+    "enter_vehicle_year": "Enter vehicle year",
+    "vehicle_license_plate": "Vehicle license plate",
+    "enter_vehicle_license_plate": "Enter vehicle license plate",
+    "vehicle_name": "Vehicle name",
+    "enter_vehicle_name": "Enter vehicle name",
+    "edit_vehicle": "Edit Vehicle",
+    "edit": "Edit",
+    "delete_vehicle": "Delete",
+    "cancel": "Cancel"
+}

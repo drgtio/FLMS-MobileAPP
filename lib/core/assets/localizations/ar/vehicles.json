@@ -1,0 +1,18 @@
+{
+    "add_vehicle_sub_title": "اضف السيارة لاظهارها في قائمة السيارات",
+    "add_vehicle": "اضافة سيارة",
+    "vehicle_maker": "مصنع السيارة",
+    "select_vehicle_maker": "اختر مصنع السيارة",
+    "vehicle_model": "موديل السيارة",
+    "enter_vehicle_model": "ادخل موديل السيارة",
+    "vehicle_year": "سنة السيارة",
+    "enter_vehicle_year": "ادخل سنة السيارة",
+    "vehicle_license_plate": "رقم اللوحة",
+    "enter_vehicle_license_plate": "ادخل رقم اللوحة",
+    "vehicle_name": "اسم السيارة",
+    "enter_vehicle_name": "ادخل اسم السيارة",
+    "edit_vehicle": "تعديل السيارة",
+    "edit": "تعديل",
+    "delete_vehicle": "حذف",
+    "cancel": "الغاء"
+}
