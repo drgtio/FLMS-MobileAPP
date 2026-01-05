@@ -100,66 +100,68 @@ class _AddEditVehicleScreenState extends State<AddEditVehicleScreen> {
                       : 'add_vehicle'.tr(),
               showBackButton: true,
             ),
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 32),
-                _buildSubTitle(),
-                const SizedBox(height: 24),
-                AppTextFieldDefault(
-                  hint: 'enter_vehicle_name'.tr(),
-                  label: 'vehicle_name'.tr(),
-                  controller: nameController,
-                  validator: (value) => null,
-                ),
-                const SizedBox(height: 16),
-                AppDropdownField(
-                  label: 'vehicle_maker'.tr(),
-                  hint: 'select_vehicle_maker'.tr(),
-                  value: viewModel.selectedMaker?.name,
-                  onTap: () {
-                    _navigateLookupScreen(context);
-                  },
-                ),
+            body: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 32),
+                  _buildSubTitle(),
+                  const SizedBox(height: 24),
+                  AppTextFieldDefault(
+                    hint: 'enter_vehicle_name'.tr(),
+                    label: 'vehicle_name'.tr(),
+                    controller: nameController,
+                    validator: (value) => null,
+                  ),
+                  const SizedBox(height: 16),
+                  AppDropdownField(
+                    label: 'vehicle_maker'.tr(),
+                    hint: 'select_vehicle_maker'.tr(),
+                    value: viewModel.selectedMaker?.name,
+                    onTap: () {
+                      _navigateLookupScreen(context);
+                    },
+                  ),
 
-                const SizedBox(height: 16),
-                AppTextFieldDefault(
-                  hint: 'enter_vehicle_year'.tr(),
-                  label: 'vehicle_year'.tr(),
-                  controller: yearController,
-                  validator: (value) => null,
-                ),
+                  const SizedBox(height: 16),
+                  AppTextFieldDefault(
+                    hint: 'enter_vehicle_year'.tr(),
+                    label: 'vehicle_year'.tr(),
+                    controller: yearController,
+                    validator: (value) => null,
+                  ),
 
-                const SizedBox(height: 16),
-                AppTextFieldDefault(
-                  hint: 'enter_vehicle_model'.tr(),
-                  label: 'vehicle_model'.tr(),
-                  controller: modelController,
-                  validator: (value) => null,
-                ),
+                  const SizedBox(height: 16),
+                  AppTextFieldDefault(
+                    hint: 'enter_vehicle_model'.tr(),
+                    label: 'vehicle_model'.tr(),
+                    controller: modelController,
+                    validator: (value) => null,
+                  ),
 
-                const SizedBox(height: 16),
-                AppTextFieldDefault(
-                  hint: 'enter_vehicle_license_plate'.tr(),
-                  label: 'vehicle_license_plate'.tr(),
-                  controller: plateController,
-                  validator: (value) => null,
-                ),
+                  const SizedBox(height: 16),
+                  AppTextFieldDefault(
+                    hint: 'enter_vehicle_license_plate'.tr(),
+                    label: 'vehicle_license_plate'.tr(),
+                    controller: plateController,
+                    validator: (value) => null,
+                  ),
 
-                const SizedBox(height: 24),
-                ValueListenableBuilder<ResultState<void>>(
-                  valueListenable:
-                      widget.selectedVehicle != null
-                          ? viewModel.editVehicleState
-                          : viewModel.addVehicleState,
-                  builder: (context, state, _) {
-                    if (state is Loading) {
-                      return _buildAddVehicleButton(isLoading: true);
-                    }
-                    return _buildAddVehicleButton();
-                  },
-                ),
-              ],
+                  const SizedBox(height: 24),
+                  ValueListenableBuilder<ResultState<void>>(
+                    valueListenable:
+                        widget.selectedVehicle != null
+                            ? viewModel.editVehicleState
+                            : viewModel.addVehicleState,
+                    builder: (context, state, _) {
+                      if (state is Loading) {
+                        return _buildAddVehicleButton(isLoading: true);
+                      }
+                      return _buildAddVehicleButton();
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
     );

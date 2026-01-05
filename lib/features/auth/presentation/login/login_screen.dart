@@ -132,41 +132,43 @@ class _LoginScreenState extends State<LoginScreen> {
             (context, _) => Scaffold(
               backgroundColor: AppColors.white,
               appBar: const MainToolbar(title: '', showBackButton: false),
-              body: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 32),
-                  _buildTitle(),
-                  const SizedBox(height: 8),
-                  _buildSubTitle(),
-                  const SizedBox(height: 24),
-                  AppTextFieldDefault(
-                    hint: 'enter_user_name'.tr(),
-                    label: 'user_name'.tr(),
-                    controller: userNameController,
-                    validator: (value) => null,
-                  ),
-                  const SizedBox(height: 16),
-                  AppTextFieldPassword(
-                    hint: 'enter_password'.tr(),
-                    label: 'password'.tr(),
-                    errorMessage: viewModel.errorMessage,
-                    controller: passwordController,
-                    validator: (value) => null,
-                  ),
-                  const SizedBox(height: 24),
-                  ValueListenableBuilder<ResultState<void>>(
-                    valueListenable: viewModel.loginState,
-                    builder: (context, state, _) {
-                      if (state is Loading) {
-                        return _buildLoginButton(isLoading: true);
-                      }
-                      return _buildLoginButton();
-                    },
-                  ),
-                  const SizedBox(height: 8),
-                  _buildCreateAccount(),
-                ],
+              body: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 32),
+                    _buildTitle(),
+                    const SizedBox(height: 8),
+                    _buildSubTitle(),
+                    const SizedBox(height: 24),
+                    AppTextFieldDefault(
+                      hint: 'enter_user_name'.tr(),
+                      label: 'user_name'.tr(),
+                      controller: userNameController,
+                      validator: (value) => null,
+                    ),
+                    const SizedBox(height: 16),
+                    AppTextFieldPassword(
+                      hint: 'enter_password'.tr(),
+                      label: 'password'.tr(),
+                      errorMessage: viewModel.errorMessage,
+                      controller: passwordController,
+                      validator: (value) => null,
+                    ),
+                    const SizedBox(height: 24),
+                    ValueListenableBuilder<ResultState<void>>(
+                      valueListenable: viewModel.loginState,
+                      builder: (context, state, _) {
+                        if (state is Loading) {
+                          return _buildLoginButton(isLoading: true);
+                        }
+                        return _buildLoginButton();
+                      },
+                    ),
+                    const SizedBox(height: 8),
+                    _buildCreateAccount(),
+                  ],
+                ),
               ),
             ),
       ),
