@@ -25,7 +25,6 @@ class VehicleItem extends StatelessWidget {
 
     final maintenance = item.maintenanceStatus;
     final Color statusColor = _maintenanceColor(maintenance);
-    final String statusLabel = _maintenanceLabel(maintenance);
 
     final String title =
         (item.name ?? '').isNotEmpty
@@ -60,7 +59,7 @@ class VehicleItem extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Top row: avatar + title + maintenance badge
+                      // Top row: avatar + title + corner action
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -94,9 +93,20 @@ class VehicleItem extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: 8),
-                          _MaintenanceBadge(
-                            color: statusColor,
-                            label: statusLabel,
+                          Container(
+                            width: 38,
+                            height: 38,
+                            decoration: BoxDecoration(
+                              color: AppColors.primary,
+                              shape: BoxShape.circle,
+                            ),
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.person_add_rounded, size: 20),
+                              color: const Color.fromARGB(255, 255, 255, 255),
+                              splashRadius: 20,
+                              tooltip: 'Person',
+                            ),
                           ),
                         ],
                       ),
@@ -249,16 +259,6 @@ class VehicleItem extends StatelessWidget {
     }
   }
 
-  String _maintenanceLabel(String? status) {
-    switch (status) {
-      case 'Overdue':
-        return 'Overdue';
-      case 'DueSoon':
-        return 'Due soon';
-      default:
-        return 'OK';
-    }
-  }
 }
 
 /// Circular avatar with initials / first letter
@@ -283,44 +283,6 @@ class _VehicleAvatar extends StatelessWidget {
           fontWeight: FontWeight.bold,
           color: AppColors.secondary,
         ),
-      ),
-    );
-  }
-}
-
-class _MaintenanceBadge extends StatelessWidget {
-  final Color color;
-  final String label;
-
-  const _MaintenanceBadge({required this.color, required this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.08),
-        borderRadius: BorderRadius.circular(999),
-        border: Border.all(color: color.withOpacity(0.6), width: 0.7),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 6,
-            height: 6,
-            decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-          ),
-          const SizedBox(width: 4),
-          Text(
-            label,
-            style: AppStyles.textSize14.copyWith(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: color,
-            ),
-          ),
-        ],
       ),
     );
   }
