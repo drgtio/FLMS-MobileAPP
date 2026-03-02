@@ -1,12 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:v2x/core/components/button/filled_button.dart';
 import 'package:v2x/core/components/button/outline_button.dart';
+import 'package:v2x/core/navigation/navigation_router.dart';
 import 'package:v2x/core/components/toolbar/main_toolbar.dart';
 import 'package:v2x/core/network/state/result_state.dart';
 import 'package:v2x/core/theme/app_colors.dart';
 import 'package:v2x/features/drivers/data/remote/response/remote_driver_model.dart';
+import 'package:v2x/features/drivers/domain/utils/constant_drivers.dart';
 import 'package:v2x/features/drivers/presentation/components/driver_item.dart';
 import 'package:v2x/features/drivers/presentation/components/empty_view.dart';
 import 'package:v2x/features/drivers/presentation/drivers_list_view_model.dart';
@@ -57,7 +60,12 @@ class _DriversListScreenState extends State<DriversListScreen> {
             color: AppColors.white,
             child: AppFilledButton(
               label: 'add_driver'.tr(),
-              onClick: () => _showNotImplemented(context),
+              onClick: () {
+                GoRouter.of(context).push(
+                  AppRoutes.addDriver,
+                  extra: {ConstantDrivers.onRefresh: viewModel.init},
+                );
+              },
             ),
           ),
           Expanded(
@@ -84,7 +92,15 @@ class _DriversListScreenState extends State<DriversListScreen> {
                           final driver = viewModel.items[index];
                           return DriverItem(
                             item: driver,
-                            onClickEditDriver: () => _showNotImplemented(context),
+                            onClickEditDriver: () {
+                              GoRouter.of(context).push(
+                                AppRoutes.addDriver,
+                                extra: {
+                                  ConstantDrivers.selectedDriver: driver,
+                                  ConstantDrivers.onRefresh: viewModel.init,
+                                },
+                              );
+                            },
                             onClickDeleteDriver:
                                 () => _showDeleteDriverDialog(
                                   context,

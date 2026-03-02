@@ -39,6 +39,7 @@ class AppTextFieldDefault extends StatelessWidget {
           TextFormField(
             controller: controller,
             style: AppStyles.textSize14,
+            obscureText: obscureText,
             keyboardType: TextInputType.text,
             maxLength: 55,
             validator: validator,

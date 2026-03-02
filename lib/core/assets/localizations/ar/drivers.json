@@ -1,0 +1,21 @@
+{
+    "driver": "سائق",
+    "add_driver": "إضافة سائق",
+    "add_driver_sub_title": "أضف السائق ليظهر في القائمة",
+    "driver_added_successfully": "تمت إضافة السائق بنجاح",
+    "edit_driver": "تعديل السائق",
+    "edit_driver_sub_title": "حدّث بيانات السائق ثم احفظ التغييرات",
+    "driver_updated_successfully": "تم تحديث السائق بنجاح",
+    "new_password": "كلمة المرور الجديدة",
+    "enter_new_password": "اتركها فارغة للإبقاء على كلمة المرور الحالية",
+    "delete_driver": "حذف",
+    "delete_driver_title": "حذف السائق",
+    "delete_driver_message": "هل أنت متأكد أنك تريد حذف",
+    "no_drivers_yet": "لا يوجد سائقون حاليا.\nاسحب للتحديث.",
+    "driver_actions_not_implemented": "إجراءات السائق غير متاحة حاليا.",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "type": "النوع",
+    "created": "تاريخ الإنشاء",
+    "last_login": "آخر تسجيل دخول"
+}

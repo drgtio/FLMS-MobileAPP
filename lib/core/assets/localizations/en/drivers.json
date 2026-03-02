@@ -1,0 +1,21 @@
+{
+    "driver": "Driver",
+    "add_driver": "Add Driver",
+    "add_driver_sub_title": "Add the driver to view it on the list",
+    "driver_added_successfully": "Successfully added driver",
+    "edit_driver": "Edit Driver",
+    "edit_driver_sub_title": "Update driver information and save changes",
+    "driver_updated_successfully": "Successfully updated driver",
+    "new_password": "New password",
+    "enter_new_password": "Leave empty to keep current password",
+    "delete_driver": "Delete",
+    "delete_driver_title": "Delete Driver",
+    "delete_driver_message": "Are you sure you want to delete",
+    "no_drivers_yet": "No drivers yet.\nPull down to refresh.",
+    "driver_actions_not_implemented": "Driver actions are not implemented yet.",
+    "active": "Active",
+    "inactive": "Inactive",
+    "type": "Type",
+    "created": "Created",
+    "last_login": "Last login"
+}

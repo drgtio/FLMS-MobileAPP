@@ -15,4 +15,13 @@ abstract class RemoteDriversDataSource {
     @Query('PageNumber') int? page,
     @Query('PageSize') int? pageSize,
   );
+
+  @POST('/management/user/')
+  Future<BaseResponse<dynamic>> addDriver(@Body() Map<String, dynamic> body);
+
+  @PUT('/management/user/{id}')
+  Future<BaseResponse<dynamic>> updateDriver(
+    @Path('id') String id,
+    @Body() Map<String, dynamic> body,
+  );
 }

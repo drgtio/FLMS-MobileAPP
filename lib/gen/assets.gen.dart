@@ -46,6 +46,9 @@ class $LibCoreAssetsLocalizationsArGen {
   /// File path: lib/core/assets/localizations/ar/common.json
   String get common => 'lib/core/assets/localizations/ar/common.json';
 
+  /// File path: lib/core/assets/localizations/ar/drivers.json
+  String get drivers => 'lib/core/assets/localizations/ar/drivers.json';
+
   /// File path: lib/core/assets/localizations/ar/main.json
   String get main => 'lib/core/assets/localizations/ar/main.json';
 
@@ -53,7 +56,7 @@ class $LibCoreAssetsLocalizationsArGen {
   String get vehicles => 'lib/core/assets/localizations/ar/vehicles.json';
 
   /// List of all assets
-  List<String> get values => [auth, common, main, vehicles];
+  List<String> get values => [auth, common, drivers, main, vehicles];
 }
 
 class $LibCoreAssetsLocalizationsEnGen {
@@ -65,6 +68,9 @@ class $LibCoreAssetsLocalizationsEnGen {
   /// File path: lib/core/assets/localizations/en/common.json
   String get common => 'lib/core/assets/localizations/en/common.json';
 
+  /// File path: lib/core/assets/localizations/en/drivers.json
+  String get drivers => 'lib/core/assets/localizations/en/drivers.json';
+
   /// File path: lib/core/assets/localizations/en/main.json
   String get main => 'lib/core/assets/localizations/en/main.json';
 
@@ -72,7 +78,7 @@ class $LibCoreAssetsLocalizationsEnGen {
   String get vehicles => 'lib/core/assets/localizations/en/vehicles.json';
 
   /// List of all assets
-  List<String> get values => [auth, common, main, vehicles];
+  List<String> get values => [auth, common, drivers, main, vehicles];
 }
 
 class Assets {

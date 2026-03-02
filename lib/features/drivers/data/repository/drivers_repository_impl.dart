@@ -44,4 +44,51 @@ class DriversRepositoryImpl implements DriversRepository {
       );
     }
   }
+
+  @override
+  Future<bool?> addDriver(
+    String firstName,
+    String lastName,
+    String email,
+    String username,
+    String password,
+  ) async {
+    final response = await _remoteDataSource.addDriver({
+      'firstName': firstName,
+      'lastName': lastName,
+      'email': email,
+      'username': username,
+      'password': password,
+      'userType': 4,
+      'rolesId': [3],
+    });
+    return response.success;
+  }
+
+  @override
+  Future<bool?> updateDriver(
+    String id,
+    String firstName,
+    String lastName,
+    String email,
+    String username,
+    String? password,
+  ) async {
+    final Map<String, dynamic> body = {
+      'id': id,
+      'firstName': firstName,
+      'lastName': lastName,
+      'email': email,
+      'username': username,
+      'userType': 4,
+      'rolesId': [3],
+    };
+
+    if (password != null && password.isNotEmpty) {
+      body['password'] = password;
+    }
+
+    final response = await _remoteDataSource.updateDriver(id, body);
+    return response.success;
+  }
 }

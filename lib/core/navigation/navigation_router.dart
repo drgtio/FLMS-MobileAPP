@@ -12,6 +12,12 @@ import 'package:v2x/features/home/presentation/home_view_model.dart';
 import 'package:v2x/features/main/presentation/main_screen.dart';
 import 'package:v2x/features/main/presentation/main_view_model.dart';
 import 'package:v2x/features/splash/splash_screen.dart';
+import 'package:v2x/features/drivers/domain/utils/constant_drivers.dart';
+import 'package:v2x/features/drivers/data/remote/response/remote_driver_model.dart';
+import 'package:v2x/features/drivers/presentation/adddriver/add_driver_screen.dart';
+import 'package:v2x/features/drivers/presentation/adddriver/add_driver_view_model.dart';
+import 'package:v2x/features/drivers/presentation/drivers_list_screen.dart';
+import 'package:v2x/features/drivers/presentation/drivers_list_view_model.dart';
 import 'package:v2x/features/vehicles/data/remote/response/remote_vehicle_model.dart';
 import 'package:v2x/features/vehicles/domain/utils/constant_vehicles.dart';
 import 'package:v2x/features/vehicles/presentation/addeditvehicle/add_edit_vehicle_screen.dart';
@@ -55,12 +61,12 @@ final GoRouter router = GoRouter(
           },
         ),
         GoRoute(
-          path: AppRoutes.home,
+          path: AppRoutes.drivers,
           name: 'drivers',
           builder: (context, state) {
-            return ChangeNotifierProvider<HomeViewModel>(
-              create: (_) => getIt<HomeViewModel>(),
-              child: const HomeScreen(),
+            return ChangeNotifierProvider<DriversListViewModel>(
+              create: (_) => getIt<DriversListViewModel>(),
+              child: const DriversListScreen(),
             );
           },
         ),
@@ -115,6 +121,23 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
+      path: AppRoutes.addDriver,
+      builder: (context, state) {
+        final data = state.extra as Map<String, dynamic>?;
+        final onRefresh = data?[ConstantDrivers.onRefresh] as Function();
+        final selectedDriver =
+            data?[ConstantDrivers.selectedDriver] as RemoteDriverModel?;
+
+        return ChangeNotifierProvider<AddDriverViewModel>(
+          create: (_) => getIt<AddDriverViewModel>(),
+          child: AddDriverScreen(
+            onRefresh: onRefresh,
+            selectedDriver: selectedDriver,
+          ),
+        );
+      },
+    ),
+    GoRoute(
       path: AppRoutes.addVehicle,
       builder: (context, state) {
         final data = state.extra as Map<String, dynamic>?;
@@ -142,6 +165,7 @@ class AppRoutes {
   static const vehicles = '/lib/features/vehicles/presentation';
   static const addVehicle = '/lib/features/vehicles/presentation/addeditvehicle';
   static const drivers = '/lib/features/drivers/presentation';
+  static const addDriver = '/lib/features/drivers/presentation/adddriver';
   static const static = '/lib/features/more/presentation/static';
   static const lookupList = '/lib/features/vehicles/presentation/lookup';
   static const contactUs = '/lib/features/more/presentation/contactus';

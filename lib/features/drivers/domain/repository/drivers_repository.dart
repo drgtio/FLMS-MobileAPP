@@ -6,4 +6,21 @@ abstract class DriversRepository {
   Future<Either<AppException, RemoteDriversData>> getDriversList({
     required int page,
   });
+
+  Future<bool?> addDriver(
+    String firstName,
+    String lastName,
+    String email,
+    String username,
+    String password,
+  );
+
+  Future<bool?> updateDriver(
+    String id,
+    String firstName,
+    String lastName,
+    String email,
+    String username,
+    String? password,
+  );
 }
