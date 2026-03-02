@@ -22,6 +22,8 @@ import 'package:v2x/features/vehicles/data/remote/response/remote_vehicle_model.
 import 'package:v2x/features/vehicles/domain/utils/constant_vehicles.dart';
 import 'package:v2x/features/vehicles/presentation/addeditvehicle/add_edit_vehicle_screen.dart';
 import 'package:v2x/features/vehicles/presentation/addeditvehicle/add_edit_vehicle_view_model.dart';
+import 'package:v2x/features/vehicles/presentation/assignment/assign_vehicle_screen.dart';
+import 'package:v2x/features/vehicles/presentation/assignment/assign_vehicle_view_model.dart';
 import 'package:v2x/features/vehicles/presentation/lookup/lookup_list_screen.dart';
 import 'package:v2x/features/vehicles/presentation/lookup/lookup_list_viewmodel.dart';
 import 'package:v2x/features/vehicles/presentation/vehicles_list_screen.dart';
@@ -153,6 +155,27 @@ final GoRouter router = GoRouter(
         );
       },
     ),
+    GoRoute(
+      path: AppRoutes.assignVehicle,
+      builder: (context, state) {
+        final data = state.extra as Map<String, dynamic>?;
+        final selectedVehicle =
+            data?[ConstantVehicles.selectedVehicle] as RemoteVehicleModel?;
+        final onRefresh = data?[ConstantVehicles.onRefresh] as Function()?;
+
+        if (selectedVehicle == null || onRefresh == null) {
+          return const SizedBox.shrink();
+        }
+
+        return ChangeNotifierProvider<AssignVehicleViewModel>(
+          create: (_) => getIt<AssignVehicleViewModel>(),
+          child: AssignVehicleScreen(
+            selectedVehicle: selectedVehicle,
+            onRefresh: onRefresh,
+          ),
+        );
+      },
+    ),
   ],
 );
 
@@ -164,6 +187,7 @@ class AppRoutes {
   static const more = '/lib/features/more/presentation';
   static const vehicles = '/lib/features/vehicles/presentation';
   static const addVehicle = '/lib/features/vehicles/presentation/addeditvehicle';
+  static const assignVehicle = '/lib/features/vehicles/presentation/assignment';
   static const drivers = '/lib/features/drivers/presentation';
   static const addDriver = '/lib/features/drivers/presentation/adddriver';
   static const static = '/lib/features/more/presentation/static';

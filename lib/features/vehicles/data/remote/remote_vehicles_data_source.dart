@@ -25,6 +25,16 @@ abstract class RemoteVehiclesDataSource {
   @DELETE('/manage/vehicle/{id}')
   Future<BaseResponse<int?>> deleteVehicle(@Path() int id);
 
+  @POST('/manage/vehicle-assignment')
+  Future<BaseResponse<dynamic>> createVehicleAssignment(
+    @Body() Map<String, dynamic> body,
+  );
+
+  @PUT('/manage/vehicle-assignment')
+  Future<BaseResponse<dynamic>> updateVehicleAssignment(
+    @Body() Map<String, dynamic> body,
+  );
+
   @GET('/vehicle-maker/lookup')
   Future<BaseResponse<List<Maker>?>> getVehicleMakers();
 }

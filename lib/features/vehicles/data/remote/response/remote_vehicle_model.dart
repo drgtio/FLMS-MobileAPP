@@ -55,6 +55,14 @@ class RemoteVehicleModel {
   final String? currentDriverName;
   final String? currentDevice;
   final String? currentDriverId;
+  @JsonKey(name: 'currentAssignmentId')
+  final Object? currentAssignmentId;
+  @JsonKey(name: 'currentAssignmentStart')
+  final String? currentAssignmentStartDate;
+  @JsonKey(name: 'currentAssignmentEnd')
+  final String? currentAssignmentEndDate;
+  @JsonKey(name: 'assignmentComment')
+  final String? currentAssignmentComment;
 
   final bool? isDeleted;
   final String? deletionDate;
@@ -82,6 +90,10 @@ class RemoteVehicleModel {
     this.currentDriverName,
     this.currentDevice,
     this.currentDriverId,
+    this.currentAssignmentId,
+    this.currentAssignmentStartDate,
+    this.currentAssignmentEndDate,
+    this.currentAssignmentComment,
     required this.isDeleted, 
     this.deletionDate,
     this.updatedDate,

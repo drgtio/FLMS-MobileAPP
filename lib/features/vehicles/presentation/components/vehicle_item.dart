@@ -10,12 +10,14 @@ class VehicleItem extends StatelessWidget {
   final RemoteVehicleModel item;
   final VoidCallback? onClickEditVehicle;
   final VoidCallback? onClickDeleteVehicle;
+  final VoidCallback? onClickAssignVehicle;
 
   const VehicleItem({
     super.key,
     required this.item,
     this.onClickEditVehicle,
     this.onClickDeleteVehicle,
+    this.onClickAssignVehicle,
   });
 
   @override
@@ -101,7 +103,9 @@ class VehicleItem extends StatelessWidget {
                               shape: BoxShape.circle,
                             ),
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                onClickAssignVehicle?.call();
+                              },
                               icon: const Icon(Icons.person_add_rounded, size: 20),
                               color: const Color.fromARGB(255, 255, 255, 255),
                               splashRadius: 20,

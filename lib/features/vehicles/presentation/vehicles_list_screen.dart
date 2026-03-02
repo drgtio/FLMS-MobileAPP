@@ -99,6 +99,15 @@ class _VehiclesListScreenState extends State<VehiclesListScreen> {
                           final vehicleItem = viewModel.items[index];
                           return VehicleItem(
                             item: vehicleItem,
+                            onClickAssignVehicle: () {
+                              GoRouter.of(context).push(
+                                AppRoutes.assignVehicle,
+                                extra: {
+                                  ConstantVehicles.selectedVehicle: vehicleItem,
+                                  ConstantVehicles.onRefresh: viewModel.init,
+                                },
+                              );
+                            },
                             onClickEditVehicle: () {
                               GoRouter.of(context).push(
                                 AppRoutes.addVehicle,

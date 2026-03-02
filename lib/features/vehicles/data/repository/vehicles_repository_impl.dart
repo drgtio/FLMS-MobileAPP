@@ -87,6 +87,38 @@ class VehiclesRepositoryImpl implements VehiclesRepository {
   }
 
   @override
+  Future<bool?> assignVehicle({
+    required bool isUpdate,
+    required int vehicleId,
+    required String operatorId,
+    Object? currentAssignmentId,
+    String? startDate,
+    String? endDate,
+    String? comment,
+  }) async {
+    final body = {
+      'vehicleId': vehicleId,
+      'operatorId': operatorId,
+      'startDate': startDate,
+      'endDate': endDate,
+      'comment': comment,
+    };
+    if (isUpdate) {
+      final assignmentId = (currentAssignmentId ?? '').toString().trim();
+      if (assignmentId.isEmpty) {
+        throw Exception('Missing current assignment id for update request');
+      }
+      body['id'] = assignmentId;
+      body['vehicleId'] = vehicleId.toString();
+      final response = await _remoteDataSource.updateVehicleAssignment(body);
+      return response.success;
+    }
+
+    final response = await _remoteDataSource.createVehicleAssignment(body);
+    return response.success;
+  }
+
+  @override
   Future<List<Maker>?> getVehicleMakers() async {
     final response = await _remoteDataSource.getVehicleMakers();
     return response.data;

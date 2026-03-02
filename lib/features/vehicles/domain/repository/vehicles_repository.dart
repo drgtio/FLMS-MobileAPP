@@ -28,5 +28,15 @@ abstract class VehiclesRepository {
 
   Future<int?> deleteVehicle(int id);
 
+  Future<bool?> assignVehicle({
+    required bool isUpdate,
+    required int vehicleId,
+    required String operatorId,
+    Object? currentAssignmentId,
+    String? startDate,
+    String? endDate,
+    String? comment,
+  });
+
   Future<List<Maker>?> getVehicleMakers();
 }
