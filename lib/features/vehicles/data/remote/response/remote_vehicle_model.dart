@@ -54,6 +54,7 @@ class RemoteVehicleModel {
   final bool? isCurrentlyAssigned;
   final String? currentDriverName;
   final String? currentDevice;
+  final String? currentDriverId;
 
   final bool? isDeleted;
   final String? deletionDate;
@@ -80,7 +81,8 @@ class RemoteVehicleModel {
     required this.isCurrentlyAssigned,
     this.currentDriverName,
     this.currentDevice,
-    required this.isDeleted,
+    this.currentDriverId,
+    required this.isDeleted, 
     this.deletionDate,
     this.updatedDate,
     this.createdDate,
