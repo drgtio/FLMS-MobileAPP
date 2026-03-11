@@ -14,5 +14,16 @@
     "edit_vehicle": "Edit Vehicle",
     "edit": "Edit",
     "delete_vehicle": "Delete",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "vehicle_controller_title": "Vehicle Controller",
+    "vehicle_controller_subtitle": "Control your vehicle remotely",
+    "start_engine": "Start Engine",
+    "stop_engine": "Stop Engine",
+    "engine_running": "Engine Running",
+    "engine_off": "Engine Off",
+    "current_location": "Current Location",
+    "last_activity": "Last Activity",
+    "speed": "Speed",
+    "vehicle_no_device_associated": "No device is associated with this vehicle.",
+    "vehicle_controller_back": "Back"
 }

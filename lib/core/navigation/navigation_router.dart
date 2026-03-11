@@ -26,6 +26,8 @@ import 'package:v2x/features/vehicles/presentation/assignment/assign_vehicle_scr
 import 'package:v2x/features/vehicles/presentation/assignment/assign_vehicle_view_model.dart';
 import 'package:v2x/features/vehicles/presentation/lookup/lookup_list_screen.dart';
 import 'package:v2x/features/vehicles/presentation/lookup/lookup_list_viewmodel.dart';
+import 'package:v2x/features/vehicles/presentation/controller/vehicle_controller_screen.dart';
+import 'package:v2x/features/vehicles/presentation/controller/vehicle_controller_view_model.dart';
 import 'package:v2x/features/vehicles/presentation/vehicles_list_screen.dart';
 import 'package:v2x/features/vehicles/presentation/vehicles_list_view_model.dart';
 import 'package:v2x/main.dart';
@@ -176,6 +178,27 @@ final GoRouter router = GoRouter(
         );
       },
     ),
+    GoRoute(
+      path: AppRoutes.vehicleController,
+      builder: (context, state) {
+        final data = state.extra as Map<String, dynamic>?;
+        final selectedVehicle =
+            data?[ConstantVehicles.selectedVehicle] as RemoteVehicleModel?;
+        final onRefresh = data?[ConstantVehicles.onRefresh] as Function()?;
+
+        if (selectedVehicle == null) {
+          return const SizedBox.shrink();
+        }
+
+        return ChangeNotifierProvider<VehicleControllerViewModel>(
+          create: (_) => VehicleControllerViewModel(),
+          child: VehicleControllerScreen(
+            selectedVehicle: selectedVehicle,
+            onRefresh: onRefresh,
+          ),
+        );
+      },
+    ),
   ],
 );
 
@@ -192,5 +215,7 @@ class AppRoutes {
   static const addDriver = '/lib/features/drivers/presentation/adddriver';
   static const static = '/lib/features/more/presentation/static';
   static const lookupList = '/lib/features/vehicles/presentation/lookup';
+  static const vehicleController =
+      '/lib/features/vehicles/presentation/controller';
   static const contactUs = '/lib/features/more/presentation/contactus';
 }

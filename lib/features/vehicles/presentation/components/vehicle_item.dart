@@ -11,6 +11,7 @@ class VehicleItem extends StatelessWidget {
   final VoidCallback? onClickEditVehicle;
   final VoidCallback? onClickDeleteVehicle;
   final VoidCallback? onClickAssignVehicle;
+  final VoidCallback? onClickVehicleController;
 
   const VehicleItem({
     super.key,
@@ -18,6 +19,7 @@ class VehicleItem extends StatelessWidget {
     this.onClickEditVehicle,
     this.onClickDeleteVehicle,
     this.onClickAssignVehicle,
+    this.onClickVehicleController,
   });
 
   @override
@@ -237,6 +239,29 @@ class VehicleItem extends StatelessWidget {
                               onClick: () {
                                 onClickDeleteVehicle?.call();
                               },
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          SizedBox(
+                            width: 40,
+                            height: 40,
+                            child: OutlinedButton(
+                              onPressed: onClickVehicleController,
+                              style: OutlinedButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                side: const BorderSide(
+                                  color: Color.fromARGB(255, 45, 59, 217),
+                                  width: 1.5,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                              ),
+                              child: const Icon(
+                                Icons.settings_outlined,
+                                size: 18,
+                                color: Color.fromARGB(255, 45, 59, 217),
+                              ),
                             ),
                           ),
                         ],

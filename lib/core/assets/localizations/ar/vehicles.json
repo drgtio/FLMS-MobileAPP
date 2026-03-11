@@ -14,5 +14,16 @@
     "edit_vehicle": "تعديل السيارة",
     "edit": "تعديل",
     "delete_vehicle": "حذف",
-    "cancel": "الغاء"
+    "cancel": "الغاء",
+    "vehicle_controller_title": "التحكم بالمركبة",
+    "vehicle_controller_subtitle": "تحكم بالمركبة عن بُعد",
+    "start_engine": "تشغيل المحرك",
+    "stop_engine": "إيقاف المحرك",
+    "engine_running": "المحرك يعمل",
+    "engine_off": "المحرك متوقف",
+    "current_location": "الموقع الحالي",
+    "last_activity": "آخر نشاط",
+    "speed": "السرعة",
+    "vehicle_no_device_associated": "لا يوجد جهاز مرتبط بهذه المركبة.",
+    "vehicle_controller_back": "رجوع"
 }
