@@ -191,7 +191,7 @@ final GoRouter router = GoRouter(
         }
 
         return ChangeNotifierProvider<VehicleControllerViewModel>(
-          create: (_) => VehicleControllerViewModel(),
+          create: (_) => getIt<VehicleControllerViewModel>(),
           child: VehicleControllerScreen(
             selectedVehicle: selectedVehicle,
             onRefresh: onRefresh,

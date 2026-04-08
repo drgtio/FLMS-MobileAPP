@@ -127,18 +127,6 @@ class _VehiclesListScreenState extends State<VehiclesListScreen> {
                               );
                             },
                             onClickVehicleController: () {
-                              final deviceId = vehicleItem.currentDevice?.trim();
-                              if (deviceId == null || deviceId.isEmpty) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'vehicle_no_device_associated'.tr(),
-                                    ),
-                                  ),
-                                );
-                                return;
-                              }
-
                               GoRouter.of(context).push(
                                 AppRoutes.vehicleController,
                                 extra: {

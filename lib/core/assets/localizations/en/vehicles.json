@@ -25,5 +25,20 @@
     "last_activity": "Last Activity",
     "speed": "Speed",
     "vehicle_no_device_associated": "No device is associated with this vehicle.",
-    "vehicle_controller_back": "Back"
+    "vehicle_controller_back": "Back",
+    "device": "Device",
+    "add_device": "Add Device",
+    "replace_device": "Replace",
+    "remove_device": "Remove",
+    "assign_device": "Assign",
+    "serial_number": "Serial Number",
+    "enter_serial_number": "Enter serial number",
+    "browse_devices": "Browse",
+    "by_serial_number": "By Serial",
+    "device_not_found": "Device not found",
+    "remove_device_confirm": "Are you sure you want to remove the device from this vehicle?",
+    "add_new_device": "Add New",
+    "create_device_serial_hint": "Enter a new serial number",
+    "create_and_assign": "Create & Assign",
+    "device_create_error": "Failed to create device. Please try again."
 }

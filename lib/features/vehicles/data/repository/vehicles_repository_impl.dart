@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:v2x/core/network/error/app_exception.dart';
 import 'package:v2x/core/network/error/error_handler.dart';
 import 'package:v2x/features/vehicles/data/remote/remote_vehicles_data_source.dart';
+import 'package:v2x/features/vehicles/data/remote/response/remote_device_model.dart';
 import 'package:v2x/features/vehicles/data/remote/response/remote_vehicle_model.dart';
 import 'package:v2x/features/vehicles/data/remote/response/remote_vehicles_data.dart';
 import 'package:v2x/features/vehicles/domain/repository/vehicles_repository.dart';
@@ -122,5 +123,67 @@ class VehiclesRepositoryImpl implements VehiclesRepository {
   Future<List<Maker>?> getVehicleMakers() async {
     final response = await _remoteDataSource.getVehicleMakers();
     return response.data;
+  }
+
+  @override
+  Future<RemoteDeviceModel?> getDeviceBySerial(String serialNumber) async {
+    final response = await _remoteDataSource.getDeviceBySerial(serialNumber);
+    return response.data;
+  }
+
+  @override
+  Future<Either<AppException, RemoteDevicesData>> getDevices({
+    required int page,
+    int pageSize = 10,
+  }) async {
+    try {
+      final response = await _remoteDataSource.getDevices(page, pageSize);
+      final data = response.data;
+      return Right(
+        RemoteDevicesData(
+          totalPages: data?.totalPages,
+          data: data?.data,
+          totalRows: data?.totalRows,
+        ),
+      );
+    } catch (e) {
+      final exception = ErrorHandler.handle(e);
+      return Left(AppException(
+        message: exception.message,
+        exception: exception.exception,
+      ));
+    }
+  }
+
+  @override
+  Future<bool?> assignDevice({
+    required int deviceId,
+    int? vehicleId,
+    required String serialNumber,
+  }) async {
+    final response = await _remoteDataSource.assignDevice({
+      'id': deviceId,
+      'vehicleId': vehicleId,
+      'serialNumber': serialNumber,
+    });
+    return response.success;
+  }
+
+  @override
+  Future<RemoteDeviceModel?> createDevice({
+    required String serialNumber,
+    required int vehicleId,
+  }) async {
+    final response = await _remoteDataSource.createDevice({
+      'serialNumber': serialNumber,
+      'vehicleId': vehicleId,
+    });
+    return response.data;
+  }
+
+  @override
+  Future<bool?> deleteDevice(int deviceId) async {
+    final response = await _remoteDataSource.deleteDevice(deviceId);
+    return response.success;
   }
 }

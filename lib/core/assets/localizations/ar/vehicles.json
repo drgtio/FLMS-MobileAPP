@@ -25,5 +25,20 @@
     "last_activity": "آخر نشاط",
     "speed": "السرعة",
     "vehicle_no_device_associated": "لا يوجد جهاز مرتبط بهذه المركبة.",
-    "vehicle_controller_back": "رجوع"
+    "vehicle_controller_back": "رجوع",
+    "device": "الجهاز",
+    "add_device": "إضافة جهاز",
+    "replace_device": "استبدال",
+    "remove_device": "إزالة",
+    "assign_device": "تعيين",
+    "serial_number": "الرقم التسلسلي",
+    "enter_serial_number": "أدخل الرقم التسلسلي",
+    "browse_devices": "استعراض",
+    "by_serial_number": "بالرقم التسلسلي",
+    "device_not_found": "الجهاز غير موجود",
+    "remove_device_confirm": "هل أنت متأكد من إزالة الجهاز من هذه المركبة؟",
+    "add_new_device": "إضافة جديد",
+    "create_device_serial_hint": "أدخل رقم تسلسلي جديد",
+    "create_and_assign": "إنشاء وتعيين",
+    "device_create_error": "فشل إنشاء الجهاز. يرجى المحاولة مجدداً."
 }

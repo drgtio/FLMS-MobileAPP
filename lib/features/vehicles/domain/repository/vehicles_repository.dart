@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import 'package:v2x/core/network/error/app_exception.dart';
+import 'package:v2x/features/vehicles/data/remote/response/remote_device_model.dart';
 import 'package:v2x/features/vehicles/data/remote/response/remote_vehicle_model.dart';
 import 'package:v2x/features/vehicles/data/remote/response/remote_vehicles_data.dart';
 
@@ -39,4 +40,24 @@ abstract class VehiclesRepository {
   });
 
   Future<List<Maker>?> getVehicleMakers();
+
+  Future<RemoteDeviceModel?> getDeviceBySerial(String serialNumber);
+
+  Future<Either<AppException, RemoteDevicesData>> getDevices({
+    required int page,
+    int pageSize = 10,
+  });
+
+  Future<bool?> assignDevice({
+    required int deviceId,
+    int? vehicleId,
+    required String serialNumber,
+  });
+
+  Future<RemoteDeviceModel?> createDevice({
+    required String serialNumber,
+    required int vehicleId,
+  });
+
+  Future<bool?> deleteDevice(int deviceId);
 }
