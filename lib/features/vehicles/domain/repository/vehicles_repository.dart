@@ -60,4 +60,10 @@ abstract class VehiclesRepository {
   });
 
   Future<bool?> deleteDevice(int deviceId);
+
+  Future<bool?> relayControl({
+    required int vehicleId,
+    required int relayNumber,
+    required bool control,
+  });
 }

@@ -12,11 +12,11 @@ import 'package:dio/dio.dart' as _i3;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i4;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:v2x/core/network/network_module.dart' as _i54;
+import 'package:v2x/core/network/network_module.dart' as _i55;
 import 'package:v2x/core/storage/secure_storage_user.dart' as _i11;
-import 'package:v2x/core/storage/storage_module.dart' as _i55;
+import 'package:v2x/core/storage/storage_module.dart' as _i56;
 import 'package:v2x/core/utils/media_picker_helper.dart' as _i6;
-import 'package:v2x/features/auth/data/di/auth_data_source_module.dart' as _i56;
+import 'package:v2x/features/auth/data/di/auth_data_source_module.dart' as _i57;
 import 'package:v2x/features/auth/data/remote/remote_auth_data_source.dart'
     as _i7;
 import 'package:v2x/features/auth/data/repository/auth_repository_impl.dart'
@@ -38,7 +38,7 @@ import 'package:v2x/features/auth/presentation/login/login_view_model.dart'
 import 'package:v2x/features/auth/presentation/register/register_view_model.dart'
     as _i41;
 import 'package:v2x/features/drivers/data/di/drivers_data_source_module.dart'
-    as _i57;
+    as _i58;
 import 'package:v2x/features/drivers/data/remote/remote_drivers_data_source.dart'
     as _i8;
 import 'package:v2x/features/drivers/data/repository/drivers_repository_impl.dart'
@@ -46,18 +46,18 @@ import 'package:v2x/features/drivers/data/repository/drivers_repository_impl.dar
 import 'package:v2x/features/drivers/domain/repository/drivers_repository.dart'
     as _i26;
 import 'package:v2x/features/drivers/domain/usecases/add_driver_use_case.dart'
-    as _i46;
+    as _i47;
 import 'package:v2x/features/drivers/domain/usecases/get_drivers_use_case.dart'
     as _i31;
 import 'package:v2x/features/drivers/domain/usecases/update_driver_use_case.dart'
-    as _i43;
+    as _i44;
 import 'package:v2x/features/drivers/domain/usecases/validate_add_driver_use_case.dart'
     as _i12;
 import 'package:v2x/features/drivers/presentation/adddriver/add_driver_view_model.dart'
-    as _i47;
+    as _i48;
 import 'package:v2x/features/drivers/presentation/drivers_list_view_model.dart'
-    as _i50;
-import 'package:v2x/features/home/data/di/home_data_source_module.dart' as _i58;
+    as _i51;
+import 'package:v2x/features/home/data/di/home_data_source_module.dart' as _i59;
 import 'package:v2x/features/home/data/remote/remote_home_data_source.dart'
     as _i9;
 import 'package:v2x/features/home/data/repository/home_repository_impl.dart'
@@ -65,14 +65,14 @@ import 'package:v2x/features/home/data/repository/home_repository_impl.dart'
 import 'package:v2x/features/home/domain/repository/home_repository.dart'
     as _i35;
 import 'package:v2x/features/home/domain/usecases/get_area_list_use_case.dart'
-    as _i51;
-import 'package:v2x/features/home/domain/usecases/get_vehicles_area_use_case.dart'
     as _i52;
-import 'package:v2x/features/home/presentation/home_view_model.dart' as _i53;
+import 'package:v2x/features/home/domain/usecases/get_vehicles_area_use_case.dart'
+    as _i53;
+import 'package:v2x/features/home/presentation/home_view_model.dart' as _i54;
 import 'package:v2x/features/main/presentation/main_view_model.dart' as _i5;
-import 'package:v2x/features/splash/splash_view_model.dart' as _i42;
+import 'package:v2x/features/splash/splash_view_model.dart' as _i43;
 import 'package:v2x/features/vehicles/data/di/vehicles_data_source_module.dart'
-    as _i59;
+    as _i60;
 import 'package:v2x/features/vehicles/data/remote/remote_vehicles_data_source.dart'
     as _i10;
 import 'package:v2x/features/vehicles/data/repository/vehicles_repository_impl.dart'
@@ -101,18 +101,20 @@ import 'package:v2x/features/vehicles/domain/usecases/get_vehicle_makers_use_cas
     as _i33;
 import 'package:v2x/features/vehicles/domain/usecases/get_vehicles_use_case.dart'
     as _i34;
+import 'package:v2x/features/vehicles/domain/usecases/relay_control_use_case.dart'
+    as _i42;
 import 'package:v2x/features/vehicles/domain/usecases/validate_add_vehicle_use_case.dart'
     as _i13;
 import 'package:v2x/features/vehicles/presentation/addeditvehicle/add_edit_vehicle_view_model.dart'
-    as _i48;
-import 'package:v2x/features/vehicles/presentation/assignment/assign_vehicle_view_model.dart'
     as _i49;
+import 'package:v2x/features/vehicles/presentation/assignment/assign_vehicle_view_model.dart'
+    as _i50;
 import 'package:v2x/features/vehicles/presentation/controller/vehicle_controller_view_model.dart'
-    as _i44;
+    as _i45;
 import 'package:v2x/features/vehicles/presentation/lookup/lookup_list_viewmodel.dart'
     as _i39;
 import 'package:v2x/features/vehicles/presentation/vehicles_list_view_model.dart'
-    as _i45;
+    as _i46;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -201,60 +203,63 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i15.ValidateRegisterUseCase>(),
           gh<_i40.RegisterApiUseCase>(),
         ));
-    gh.factory<_i42.SplashViewModel>(
-        () => _i42.SplashViewModel(gh<_i32.GetUserApiUseCase>()));
-    gh.factory<_i43.UpdateDriverUseCase>(
-        () => _i43.UpdateDriverUseCase(gh<_i26.DriversRepository>()));
-    gh.factory<_i44.VehicleControllerViewModel>(
-        () => _i44.VehicleControllerViewModel(
+    gh.factory<_i42.RelayControlUseCase>(
+        () => _i42.RelayControlUseCase(gh<_i16.VehiclesRepository>()));
+    gh.factory<_i43.SplashViewModel>(
+        () => _i43.SplashViewModel(gh<_i32.GetUserApiUseCase>()));
+    gh.factory<_i44.UpdateDriverUseCase>(
+        () => _i44.UpdateDriverUseCase(gh<_i26.DriversRepository>()));
+    gh.factory<_i45.VehicleControllerViewModel>(
+        () => _i45.VehicleControllerViewModel(
               gh<_i29.GetDeviceBySerialUseCase>(),
               gh<_i30.GetDevicesUseCase>(),
               gh<_i19.AssignDeviceUseCase>(),
               gh<_i23.CreateDeviceUseCase>(),
               gh<_i24.DeleteDeviceUseCase>(),
+              gh<_i42.RelayControlUseCase>(),
             ));
-    gh.factory<_i45.VehiclesListViewModel>(() => _i45.VehiclesListViewModel(
+    gh.factory<_i46.VehiclesListViewModel>(() => _i46.VehiclesListViewModel(
           gh<_i34.GetVehiclesUseCase>(),
           gh<_i25.DeleteVehicleUseCase>(),
         ));
-    gh.factory<_i46.AddDriverUseCase>(
-        () => _i46.AddDriverUseCase(gh<_i26.DriversRepository>()));
-    gh.factory<_i47.AddDriverViewModel>(() => _i47.AddDriverViewModel(
-          gh<_i46.AddDriverUseCase>(),
+    gh.factory<_i47.AddDriverUseCase>(
+        () => _i47.AddDriverUseCase(gh<_i26.DriversRepository>()));
+    gh.factory<_i48.AddDriverViewModel>(() => _i48.AddDriverViewModel(
+          gh<_i47.AddDriverUseCase>(),
           gh<_i12.ValidateAddDriverUseCase>(),
-          gh<_i43.UpdateDriverUseCase>(),
+          gh<_i44.UpdateDriverUseCase>(),
         ));
-    gh.factory<_i48.AddEditVehicleViewModel>(() => _i48.AddEditVehicleViewModel(
+    gh.factory<_i49.AddEditVehicleViewModel>(() => _i49.AddEditVehicleViewModel(
           gh<_i18.AddVehicleUseCase>(),
           gh<_i13.ValidateAddVehicleUseCase>(),
           gh<_i28.EditVehicleUseCase>(),
         ));
-    gh.factory<_i49.AssignVehicleViewModel>(() => _i49.AssignVehicleViewModel(
+    gh.factory<_i50.AssignVehicleViewModel>(() => _i50.AssignVehicleViewModel(
           gh<_i20.AssignVehicleUseCase>(),
           gh<_i31.GetDriversUseCase>(),
         ));
-    gh.factory<_i50.DriversListViewModel>(
-        () => _i50.DriversListViewModel(gh<_i31.GetDriversUseCase>()));
-    gh.factory<_i51.GetAreaListUseCase>(
-        () => _i51.GetAreaListUseCase(gh<_i35.HomeRepository>()));
-    gh.factory<_i52.GetVehiclesAreaUseCase>(
-        () => _i52.GetVehiclesAreaUseCase(gh<_i35.HomeRepository>()));
-    gh.factory<_i53.HomeViewModel>(() => _i53.HomeViewModel(
-          gh<_i51.GetAreaListUseCase>(),
-          gh<_i52.GetVehiclesAreaUseCase>(),
+    gh.factory<_i51.DriversListViewModel>(
+        () => _i51.DriversListViewModel(gh<_i31.GetDriversUseCase>()));
+    gh.factory<_i52.GetAreaListUseCase>(
+        () => _i52.GetAreaListUseCase(gh<_i35.HomeRepository>()));
+    gh.factory<_i53.GetVehiclesAreaUseCase>(
+        () => _i53.GetVehiclesAreaUseCase(gh<_i35.HomeRepository>()));
+    gh.factory<_i54.HomeViewModel>(() => _i54.HomeViewModel(
+          gh<_i52.GetAreaListUseCase>(),
+          gh<_i53.GetVehiclesAreaUseCase>(),
         ));
     return this;
   }
 }
 
-class _$NetworkModule extends _i54.NetworkModule {}
+class _$NetworkModule extends _i55.NetworkModule {}
 
-class _$StorageModule extends _i55.StorageModule {}
+class _$StorageModule extends _i56.StorageModule {}
 
-class _$AuthDataSourceModule extends _i56.AuthDataSourceModule {}
+class _$AuthDataSourceModule extends _i57.AuthDataSourceModule {}
 
-class _$DriversDataSourceModule extends _i57.DriversDataSourceModule {}
+class _$DriversDataSourceModule extends _i58.DriversDataSourceModule {}
 
-class _$HomeDataSourceModule extends _i58.HomeDataSourceModule {}
+class _$HomeDataSourceModule extends _i59.HomeDataSourceModule {}
 
-class _$VehiclesDataSourceModule extends _i59.VehiclesDataSourceModule {}
+class _$VehiclesDataSourceModule extends _i60.VehiclesDataSourceModule {}

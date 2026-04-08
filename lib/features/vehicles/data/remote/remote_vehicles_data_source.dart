@@ -58,4 +58,11 @@ abstract class RemoteVehiclesDataSource {
 
   @DELETE('/manage/device/{id}')
   Future<BaseResponse<dynamic>> deleteDevice(@Path() int id);
+
+  @POST('/vehicle-remote-control/{vehicleId}/relay/{relayNumber}')
+  Future<BaseResponse<dynamic>> relayControl(
+    @Path() int vehicleId,
+    @Path() int relayNumber,
+    @Body() Map<String, dynamic> body,
+  );
 }

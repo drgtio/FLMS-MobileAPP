@@ -186,4 +186,18 @@ class VehiclesRepositoryImpl implements VehiclesRepository {
     final response = await _remoteDataSource.deleteDevice(deviceId);
     return response.success;
   }
+
+  @override
+  Future<bool?> relayControl({
+    required int vehicleId,
+    required int relayNumber,
+    required bool control,
+  }) async {
+    final response = await _remoteDataSource.relayControl(
+      vehicleId,
+      relayNumber,
+      {'control': control},
+    );
+    return response.success;
+  }
 }

@@ -124,7 +124,7 @@ class _VehicleControllerScreenState extends State<VehicleControllerScreen> {
                 isEnabled: hasDevice && !vm.isStoppingEngine,
                 onClick: () async {
                   if (!hasDevice) return;
-                  await vm.startEngine(deviceSerial);
+                  await vm.startEngine();
                 },
               ),
               const SizedBox(height: 14),
@@ -140,7 +140,7 @@ class _VehicleControllerScreenState extends State<VehicleControllerScreen> {
                 label: 'stop_engine'.tr(),
                 onClick: () async {
                   if (!hasDevice || vm.isStartingEngine) return;
-                  await vm.stopEngine(deviceSerial);
+                  await vm.stopEngine();
                 },
               ),
               const SizedBox(height: 12),

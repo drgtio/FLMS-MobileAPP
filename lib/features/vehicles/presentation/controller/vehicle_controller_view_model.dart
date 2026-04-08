@@ -8,6 +8,7 @@ import 'package:v2x/features/vehicles/domain/usecases/create_device_use_case.dar
 import 'package:v2x/features/vehicles/domain/usecases/delete_device_use_case.dart';
 import 'package:v2x/features/vehicles/domain/usecases/get_device_by_serial_use_case.dart';
 import 'package:v2x/features/vehicles/domain/usecases/get_devices_use_case.dart';
+import 'package:v2x/features/vehicles/domain/usecases/relay_control_use_case.dart';
 
 @injectable
 class VehicleControllerViewModel extends ChangeNotifier {
@@ -16,6 +17,7 @@ class VehicleControllerViewModel extends ChangeNotifier {
   final AssignDeviceUseCase _assignDeviceUseCase;
   final CreateDeviceUseCase _createDeviceUseCase;
   final DeleteDeviceUseCase _deleteDeviceUseCase;
+  final RelayControlUseCase _relayControlUseCase;
 
   VehicleControllerViewModel(
     this._getDeviceBySerialUseCase,
@@ -23,6 +25,7 @@ class VehicleControllerViewModel extends ChangeNotifier {
     this._assignDeviceUseCase,
     this._createDeviceUseCase,
     this._deleteDeviceUseCase,
+    this._relayControlUseCase,
   );
 
   // Engine state
@@ -68,30 +71,32 @@ class VehicleControllerViewModel extends ChangeNotifier {
     }
   }
 
-  Future<void> startEngine(String deviceId) async {
-    if (deviceId.trim().isEmpty) return;
+  // relay 1 + control: true  → Relay1Control  (start engine)
+  // relay 1 + control: false → Relay1Release  (stop engine)
+  static const int _engineRelayNumber = 1;
+
+  Future<void> startEngine() async {
+    if (_vehicleId == 0) return;
     await RequestStateHandler.run<bool>(
-      action: () async {
-        // TODO: Replace placeholder with start engine endpoint call.
-        final requestDeviceId = deviceId.trim();
-        if (requestDeviceId.isEmpty) return false;
-        return true;
-      },
+      action: () => _relayControlUseCase(
+        vehicleId: _vehicleId,
+        relayNumber: _engineRelayNumber,
+        control: false,
+      ),
       stateNotifier: startEngineState,
-      showPopup: false,
+      showPopup: true,
     );
     notifyListeners();
   }
 
-  Future<void> stopEngine(String deviceId) async {
-    if (deviceId.trim().isEmpty) return;
+  Future<void> stopEngine() async {
+    if (_vehicleId == 0) return;
     await RequestStateHandler.run<bool>(
-      action: () async {
-        // TODO: Replace placeholder with stop engine endpoint call.
-        final requestDeviceId = deviceId.trim();
-        if (requestDeviceId.isEmpty) return false;
-        return true;
-      },
+      action: () => _relayControlUseCase(
+        vehicleId: _vehicleId,
+        relayNumber: _engineRelayNumber,
+        control: true,
+      ),
       stateNotifier: stopEngineState,
       showPopup: false,
     );
