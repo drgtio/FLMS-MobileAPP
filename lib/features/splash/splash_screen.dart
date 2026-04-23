@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:v2x/core/di/service_locator.dart';
 import 'package:v2x/core/navigation/navigation_router.dart';
+import 'package:v2x/core/services/fcm/fcm_token_service.dart';
 import 'package:v2x/core/theme/app_colors.dart';
 import 'package:v2x/features/splash/splash_view_model.dart';
 
@@ -40,6 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
     }
     if (!mounted) return;
 
+    getIt<FcmTokenService>().registerAfterLogin();
     GoRouter.of(context).go(AppRoutes.home);
   }
 

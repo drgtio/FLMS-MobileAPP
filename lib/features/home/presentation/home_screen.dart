@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:v2x/core/di/service_locator.dart';
+import 'package:v2x/core/services/fcm/fcm_token_service.dart';
 import 'package:v2x/core/theme/app_colors.dart';
 import 'package:v2x/features/home/data/remote/response/remote_vehicle_area_model.dart';
 import 'package:v2x/features/home/presentation/home_view_model.dart';
+import 'package:v2x/features/main/presentation/main_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -34,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return Scaffold(
             appBar: AppBar(
               title: const Text('Areas Map'),
+              leading: _MenuButton(),
             ),
             body: Stack(
               children: [
@@ -604,5 +607,39 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _zoomOut() {
     _mapController?.animateCamera(CameraUpdate.zoomOut());
+  }
+}
+
+class _MenuButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<int>(
+      valueListenable: getIt<FcmTokenService>().unreadCount,
+      builder: (context, count, _) {
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () =>
+                  MainScreen.scaffoldKey.currentState?.openDrawer(),
+            ),
+            if (count > 0)
+              Positioned(
+                top: 8,
+                right: 8,
+                child: Container(
+                  width: 8,
+                  height: 8,
+                  decoration: const BoxDecoration(
+                    color: AppColors.red,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+          ],
+        );
+      },
+    );
   }
 }

@@ -51,7 +51,7 @@ class _DriversListScreenState extends State<DriversListScreen> {
     final viewModel = context.watch<DriversListViewModel>();
 
     return Scaffold(
-      appBar: MainToolbar(title: 'drivers'.tr()),
+      appBar: MainToolbar(title: 'drivers'.tr(), showMenuButton: true),
       body: Column(
         children: [
           Container(

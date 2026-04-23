@@ -28,6 +28,7 @@ import 'package:v2x/features/vehicles/presentation/lookup/lookup_list_screen.dar
 import 'package:v2x/features/vehicles/presentation/lookup/lookup_list_viewmodel.dart';
 import 'package:v2x/features/vehicles/presentation/controller/vehicle_controller_screen.dart';
 import 'package:v2x/features/vehicles/presentation/controller/vehicle_controller_view_model.dart';
+import 'package:v2x/features/notifications/presentation/notifications_screen.dart';
 import 'package:v2x/features/vehicles/presentation/vehicles_list_screen.dart';
 import 'package:v2x/features/vehicles/presentation/vehicles_list_view_model.dart';
 import 'package:v2x/main.dart';
@@ -179,6 +180,10 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
+      path: AppRoutes.notifications,
+      builder: (context, state) => const NotificationsScreen(),
+    ),
+    GoRoute(
       path: AppRoutes.vehicleController,
       builder: (context, state) {
         final data = state.extra as Map<String, dynamic>?;
@@ -218,4 +223,5 @@ class AppRoutes {
   static const vehicleController =
       '/lib/features/vehicles/presentation/controller';
   static const contactUs = '/lib/features/more/presentation/contactus';
+  static const notifications = '/notifications';
 }

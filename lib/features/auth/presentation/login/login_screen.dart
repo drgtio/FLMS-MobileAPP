@@ -15,6 +15,7 @@ import 'package:v2x/core/theme/app_colors.dart';
 import 'package:v2x/core/theme/app_style.dart';
 import 'package:v2x/core/utils/snack_bar.dart';
 import 'package:v2x/features/auth/domain/models/user_entity.dart';
+import 'package:v2x/core/services/fcm/fcm_token_service.dart';
 import 'package:v2x/features/auth/presentation/login/login_view_model.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -43,6 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (state is Success<UserEntity?>) {
       if (state.data == null) return;
       viewModel.saveUser(state.data!);
+      getIt<FcmTokenService>().registerAfterLogin();
       showSnackBarDefault(context, "Successfully logged in");
       viewModel.loginState.value = Idle();
       GoRouter.of(context).push(AppRoutes.home);

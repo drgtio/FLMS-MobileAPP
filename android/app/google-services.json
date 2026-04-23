@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "57002270581",
+    "project_id": "fleet-notification-system",
+    "storage_bucket": "fleet-notification-system.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57002270581:android:017b41ab21f6bae7687d3c",
+        "android_client_info": {
+          "package_name": "com.example.v2x"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCzSBNu-a5paVXPOKWtTcSTRkQ2bfGGLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

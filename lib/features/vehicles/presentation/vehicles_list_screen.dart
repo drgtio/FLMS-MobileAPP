@@ -53,7 +53,7 @@ class _VehiclesListScreenState extends State<VehiclesListScreen> {
     final viewModel = context.watch<VehiclesListViewModel>();
 
     return Scaffold(
-      appBar: MainToolbar(title: 'vehicles'.tr()),
+      appBar: MainToolbar(title: 'vehicles'.tr(), showMenuButton: true),
       body: Column(
         children: [
           Container(
