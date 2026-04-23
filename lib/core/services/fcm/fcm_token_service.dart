@@ -31,6 +31,7 @@ class FcmTokenService {
     await _localNotifications.initialize(
       const InitializationSettings(
         android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+        iOS: DarwinInitializationSettings(),
       ),
       onDidReceiveNotificationResponse: (_) => _navigateToVehicles(),
     );
