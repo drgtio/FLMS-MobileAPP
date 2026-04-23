@@ -42,22 +42,23 @@ class FcmTokenService {
       sound: true,
     );
 
+    FirebaseMessaging.instance.onTokenRefresh.listen((newToken) {
+      _pendingToken = newToken;
+      _tryRegisterToken(newToken);
+    });
+
     if (Platform.isIOS) {
-      // APNs token is assigned asynchronously on iOS; wait for it before
-      // requesting the FCM token, retrying until it arrives (up to ~10 s).
+      // APNs token arrives asynchronously; only request FCM token once it's set.
+      // onTokenRefresh will fire automatically when APNs becomes available.
       String? apns;
       for (var i = 0; i < 10 && apns == null; i++) {
         apns = await FirebaseMessaging.instance.getAPNSToken();
         if (apns == null) await Future.delayed(const Duration(seconds: 1));
       }
+      if (apns == null) return;
     }
 
     _pendingToken = await FirebaseMessaging.instance.getToken();
-
-    FirebaseMessaging.instance.onTokenRefresh.listen((newToken) {
-      _pendingToken = newToken;
-      _tryRegisterToken(newToken);
-    });
 
     FirebaseMessaging.onMessage.listen(_handleForegroundMessage);
     FirebaseMessaging.onMessageOpenedApp.listen(_handleNotificationTap);
